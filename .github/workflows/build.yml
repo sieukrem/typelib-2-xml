@@ -32,7 +32,7 @@ jobs:
         if ("${{ matrix.platform }}" -eq "x64"){
           Copy-Item ${{ matrix.platform}}/${{ matrix.configuration }}/*.exe ./deploy/
         } else {
-          Copy-Item ${{ matrix.configuration }}/*.exe ./deploy/
+          Copy-Item Win32/${{ matrix.configuration }}/*.exe ./deploy/
         }
 
         cd ./deploy
@@ -44,8 +44,8 @@ jobs:
         name: Build artifacts ${{ matrix.platform }} ${{ matrix.configuration }}
         path: |
           *.zip
-          ${{ matrix.configuration }}/*.exe
-          ${{ matrix.configuration }}/*.pdb
+          Win32/${{ matrix.configuration }}/*.exe
+          Win32/${{ matrix.configuration }}/*.pdb
           ${{ matrix.platform }}/${{ matrix.configuration }}/*.exe
           ${{ matrix.platform }}/${{ matrix.configuration }}/*.pdb
 
